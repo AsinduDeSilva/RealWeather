@@ -1,7 +1,6 @@
-function click(){
-    console.log("clicked");
-}
+var isDark=true;
 
-$( ".changer-btn" ).on( "click", function() {
-    alert( "Handler for `click` called." );
-} );
+
+$(".theme-changer-btn").click(function(){
+    $("body").toggleClass("light-theme");
+});

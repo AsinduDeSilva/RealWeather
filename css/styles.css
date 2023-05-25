@@ -6,6 +6,21 @@
     --color-3: #4A4E69;
     --color-4: #fff;
     --color-5: #7C3FD2;
+    --color-hover: #4a4e6996;
+    --color-shadow: #331b58;
+}
+.light-theme{
+    --color-1: #DEE2E6;
+    --color-2:#fff;
+    --color-3: #3c3c60;
+    --color-4: black;
+    --color-5: none;
+    --color-hover: #2a2a41; 
+    --color-shadow: #b2b4b7;
+
+    .theme-changer-btn{
+        content: url(../resources/icons8-sun.svg);
+    }
 }
 body{
     font-family: var(--font);
@@ -20,7 +35,7 @@ hr{
 /*---------------------------navbar------------------------------*/
 
 .navbar{
-    background-color: var(--color-1) !important;
+    background-color: #1A1A2F !important;
     color: #fff !important;
     box-shadow: #12121d 2px 2px 2px 2px;
 }
@@ -31,15 +46,14 @@ hr{
 .navbar-brand{
     font-size: 30px;
     font-weight: bold;
-    color: var(--color-4);
+    color: #fff;
 }
 .navbar-brand:hover{
-    color: var(--color-4);
+    color: #fff;
 }
 .search-bar{
     width: 500px;
-    height: 40px;
-    
+    height: 40px;   
 }
 .location-img{
     border-radius: 100%;
@@ -50,13 +64,13 @@ hr{
     scale: 1.08;
     cursor: pointer;
 }
-.changer-btn{
+.theme-changer-btn, .units-changer-btn{
     height: 35px;
     border-radius: 100%;
     margin-left: 15px;
     transition: 1s;
 }
-.changer-btn:hover{
+.theme-changer-btn:hover, .units-changer-btn:hover{
     scale: 1.2;
     rotate: 360deg;
     cursor: pointer;
@@ -76,7 +90,7 @@ hr{
     
 }
 @media screen and (max-width: 992px) {
-    .changer-btn{
+    .theme-changer-btn, .units-changer-btn{
         margin-top: 10px;
     }
     
@@ -114,7 +128,7 @@ hr{
     background-color: var(--color-1);
     border-radius: 50px;
     border: var(--color-5) solid 2px ;
-    box-shadow: #331b58 1px 1px 2px 3px;
+    box-shadow: var(--color-shadow) 0px 0px 0px 4px;
 }
 .current-title{  
     margin-left: 2%;
@@ -132,6 +146,7 @@ hr{
 .current-details{
     height: 250px;
     background-color: var(--color-3);
+    color: #fff;
     border-radius: 20px;
     border: black 3px solid;
     font-family: var(--font-2);
@@ -144,7 +159,7 @@ hr{
 }
 .current-details:hover{
     scale: 1.02;
-    background-color: #4a4e6996;
+    background-color: var(--color-hover);
 }
 .current-condition-icon{
     width: 130px;
@@ -179,6 +194,9 @@ hr{
      .current-wind{
          font-size: 35px;
      } 
+     .current-outer{
+        height: 400px;
+     }
 }
 
 @media screen and (max-width: 1199.5px) {
@@ -219,6 +237,9 @@ hr{
     .current-details:hover{
         scale: none;
     }
+    .current-outer{
+        height: 500px;
+     }
 }
 
 @media screen and (max-width:767.5px) {
@@ -238,7 +259,7 @@ hr{
     background-color: var(--color-1);
     border-radius: 50px;
     border: var(--color-5) solid 2px ;
-    box-shadow: #331b58 1px 1px 2px 3px;
+    box-shadow: var(--color-shadow) 0px 0px 0px 4px;
 }
 .forecast-title{  
     margin-left: 2%;
@@ -261,6 +282,7 @@ hr{
     align-items: center;
     justify-content: space-around;
     font-size: 25px;
+    color: #fff;
     background-color: var(--color-3);
     border: black 3px solid;
     scale: 0.95;
@@ -269,7 +291,7 @@ hr{
     transition: 0.5s;
 }
 .forecast-details:hover{
-    background-color: #4a4e6996;
+    background-color: var(--color-hover);
     scale: 0.99;
 }
 .forecast-condition-icon{
@@ -338,7 +360,7 @@ hr{
     background-color: var(--color-1);
     border-radius: 50px;
     border: var(--color-5) solid 2px ;
-    box-shadow: #331b58 1px 1px 2px 3px;
+    box-shadow: var(--color-shadow) 0px 0px 0px 4px;
 }
 .history-title{  
     margin-left: 2%;
@@ -360,6 +382,7 @@ hr{
     align-items: center;
     justify-content: space-around;
     font-size: 22px;
+    color: #fff;
     background-color: var(--color-3);
     border: black 3px solid;
     scale: 0.95;
@@ -368,7 +391,7 @@ hr{
     transition: 0.5s;
 }
 .history-details:hover{
-    background-color: #4a4e6996;
+    background-color: var(--color-hover);
     scale: 0.97;
 }
 .history-temp, .history-humidity{
@@ -416,9 +439,9 @@ hr{
 
 @media screen and (max-width:390px) {
     .history-details{
-        font-size: 12px;
+        font-size: 10px;
     }
     .history-temp, .history-humidity{
-        font-size: 12px;
+        font-size: 10px;
     } 
 }    
