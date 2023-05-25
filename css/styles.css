@@ -159,14 +159,16 @@ hr{
     align-items: center;
     justify-content: space-around;
     transition: 0.5s;
+    scale: 0.95;
 }
 .current-details:hover{
-    scale: 1.02;
+    scale: 0.97;
     background-color: var(--color-hover);
 }
 .current-condition-icon{
     width: 130px;
     border-radius: 20px;
+    background-color: #fff;
 }
 .current-temp{
     font-size: 45px;
