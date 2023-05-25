@@ -32,8 +32,20 @@
                 <input class="form-control me-3 search-bar" type="search" placeholder="Search for city, region, country" aria-label="Search">
                 <img src="resources/icons8-location-50.png" class="img-thumbnail location-img" alt="">
             </form>
+
+            <div class="dropdown ms-auto">
+              <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #1A1A2F;">
+                <img src="resources/bell.png" class="img-thumbnail alert-btn" alt="">
+              </div>
+              <ul class="dropdown-menu alerts">
+                <li><span class="dropdown-item" href="#">No Alerts</span></li>
+              </ul>
+            </div>
+            
+            
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
+                
                 <img src="resources/icons8-moon-48 (1).png" class="img-thumbnail theme-changer-btn" alt="">
                 <img src="resources/icons8-celsius-24.png" class="img-thumbnail units-changer-btn" alt="">
               </li>
@@ -295,6 +307,7 @@
 
 
     <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </body>

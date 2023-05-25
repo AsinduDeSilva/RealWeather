@@ -64,7 +64,10 @@ hr{
     scale: 1.08;
     cursor: pointer;
 }
-.theme-changer-btn, .units-changer-btn{
+.alerts{
+    font-size: 15px;
+}
+.theme-changer-btn, .units-changer-btn, .alert-btn{
     height: 35px;
     border-radius: 100%;
     margin-left: 15px;
@@ -90,7 +93,7 @@ hr{
     
 }
 @media screen and (max-width: 992px) {
-    .theme-changer-btn, .units-changer-btn{
+    .theme-changer-btn, .units-changer-btn, .alert-btn{
         margin-top: 10px;
     }
     
@@ -254,8 +257,8 @@ hr{
 
 .forecast-outer{
     height: 550px;
-    margin-top: 15vh;
-    margin-bottom: 15vh;
+    margin-top: 8vh;
+    margin-bottom: 8vh;
     background-color: var(--color-1);
     border-radius: 50px;
     border: var(--color-5) solid 2px ;
