@@ -27,26 +27,25 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <form class="d-flex ms-auto align-items-center" >
-                <input class="form-control me-3 search-bar" type="search" on placeholder="Search for city, region, country" aria-label="Search">
-                <img src="resources/icons8-location-50.png" class="img-thumbnail user-location-btn" alt="">
-            </form>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ms-auto align-items-center" >
+                <input class="form-control me-3 search-bar" type="search" placeholder="Search for city, region, country" >
+                <img src="resources/location.png" class="img-thumbnail user-location-btn" alt="">
+            </div>
 
             <div class="dropdown ms-auto">
-              <div class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #1A1A2F;">
+              <div class="dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" style="background-color: #1A1A2F;">
                 <img src="resources/bell.png" class="img-thumbnail alert-btn" alt="">
               </div>
-              <ul class="dropdown-menu alerts">
-                <li><span class="dropdown-item" href="#">No Alerts</span></li>
-              </ul>
+              <div class="dropdown-menu p-3 text-body-secondary alerts">
+                <p>No Alerts</p>
+              </div>
             </div>
-            
-            
+                  
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
                 
-                <img src="resources/icons8-moon-48 (1).png" class="img-thumbnail theme-changer-btn" alt="">
+                <img src="resources/moon.png" class="img-thumbnail theme-changer-btn" alt="">
                 <img src="resources/celcius.png" class="img-thumbnail units-changer-btn" alt="">
               </li>
             </ul>

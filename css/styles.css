@@ -19,7 +19,10 @@
     --color-shadow: #b2b4b7;
 
     .theme-changer-btn{
-        content: url(../resources/icons8-sun.svg);
+        content: url(../resources/sun.svg);
+    }
+    .alerts{
+        background-color: #DEE2E6;
     }
 }
 .imperial-units{
@@ -70,7 +73,14 @@ hr{
     cursor: pointer;
 }
 .alerts{
-    font-size: 15px;
+    font-size: 16px;
+    width: 400px;
+}
+.alerts hr{
+    color: black;
+}
+.alerts::-webkit-scrollbar{
+    
 }
 .theme-changer-btn, .units-changer-btn, .alert-btn{
     height: 35px;
@@ -91,10 +101,19 @@ hr{
     border: var(--color-5) solid 3px;
 }
 
+@media screen and (max-width: 1400px) {
+    .alerts{
+        width: 270px;
+    }
+    
+}
 @media screen and (max-width: 1200px) {
     .search-bar{
         width: 400px;
         margin-top: 10px;
+    }
+    .alerts{
+        font-size: 14px;
     }
     
 }
@@ -102,11 +121,17 @@ hr{
     .theme-changer-btn, .units-changer-btn, .alert-btn{
         margin-top: 10px;
     }
+    .alerts{
+        width: 500px;
+    }
     
 }
 @media screen and (max-width: 575px) {
     .search-bar{
         width: 285px;
+    }
+    .alerts{
+        width: 400px;
     }
     
 }
@@ -121,6 +146,9 @@ hr{
     }
     .search-bar{
         width: 270px;
+    }
+    .alerts{
+        width: 300px;
     }
     
 }
@@ -308,6 +336,7 @@ hr{
 .forecast-condition-icon{
     width: 100px;
     border-radius: 20px;
+    background-color: #fff;
 }
 .forecast-temp, .forecast-humidity{
     font-size: 45px;

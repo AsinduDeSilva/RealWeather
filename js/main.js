@@ -5,7 +5,7 @@ var isImperial=false;
 
 var setWeatherData=(location)=>{
 
-    fetch('http://api.weatherapi.com/v1/forecast.json?key='+WEATHER_API_KEY+'&days=3&q='+location)
+    fetch('http://api.weatherapi.com/v1/forecast.json?key='+WEATHER_API_KEY+'&days=3&alerts=yes&q='+location)
       .then(response => response.json())
       .then(json => {
         forecastData=json;
@@ -25,8 +25,15 @@ var setWeatherData=(location)=>{
             $(".forecast-condition-text"+i).text(json.forecast.forecastday[i].day.condition.text);
             $(".forecast-temp"+i).text(json.forecast.forecastday[i].day.avgtemp_c+" °C");
             $(".forecast-humidity"+i).text(json.forecast.forecastday[i].day.avghumidity+" %");
-        } 
+        }
         
+        if(json.alerts.alert.length>0){
+            $(".alerts").empty();
+            for(var i=0; i<json.alerts.alert.length; i++){
+                $(".alerts").append("<p>"+json.alerts.alert[i].headline+"</p>");
+                $(".alerts").append("<hr>"); 
+            }         
+        }           
     })
 
     const epoch = Math.round(Date.now()/1000);
@@ -96,11 +103,9 @@ setLocationWeatherData();
 
 
 
-
-
 $(".units-changer-btn").click(function(){
     $("body").toggleClass("imperial-units");
-    unitsChanger();
+    unitsChanger();   
 });
 
 $(".user-location-btn").click(function(){
@@ -110,15 +115,14 @@ $(".user-location-btn").click(function(){
 
 $(".theme-changer-btn").click(function(){
     $("body").toggleClass("light-theme");
-    //animations();
 });
 
 
-const tl = gsap.timeline({defaults: {duration: 0.7, ease: "power1.out"}})
+// const tl = gsap.timeline({defaults: {duration: 0.7, ease: "power1.out"}})
 
 
-animations=()=>{
-    tl.fromTo('.location-name', {opacity: 0, y:-100}, {opacity: 1, y:0})
-    tl.fromTo('.current-outer', {opacity: 0, y:-100}, {opacity: 1, y:0})
+// animations=()=>{
+//     tl.fromTo('.location-name', {opacity: 0, y:-100}, {opacity: 1, y:0})
+//     tl.fromTo('.current-outer', {opacity: 0, y:-100}, {opacity: 1, y:0})
     
-}
+// }
