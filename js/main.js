@@ -1,6 +1,7 @@
 const WEATHER_API_KEY="1a7e232a669b4a1a8da83109231405";
 var forecastData;
 var historyData;
+var isImperial=false;
 
 var setWeatherData=(location)=>{
 
@@ -42,7 +43,7 @@ var setWeatherData=(location)=>{
             $(".history-humidity"+(i+1)).text(json.forecast.forecastday[i].day.avghumidity+" %");
         }        
     })
-      
+
 }
 
 function setLocationWeatherData(){
@@ -55,6 +56,40 @@ function setLocationWeatherData(){
     }
 }
 
+function unitsChanger(){
+    if(isImperial){
+        isImperial=false;
+        $(".current-temp").text(forecastData.current.temp_c+" °C");
+        $(".current-wind").text(forecastData.current.wind_kph+" kmph");
+        $(".current-realFeel").text(forecastData.current.feelslike_c+" °C");
+
+        for(var i=1; i<3; i++){
+            $(".forecast-temp"+i).text(forecastData.forecast.forecastday[i].day.avgtemp_c+" °C");
+        }
+
+        for(var i=0; i<7; i++){
+            $(".history-temp"+(i+1)).text(historyData.forecast.forecastday[i].day.avgtemp_c+" °C");
+        }    
+
+    }else{
+        isImperial=true;
+        $(".current-temp").text(forecastData.current.temp_f+" °F");
+        $(".current-wind").text(forecastData.current.wind_mph+" mph");
+        $(".current-realFeel").text(forecastData.current.feelslike_f+" °F");
+
+        for(var i=1; i<3; i++){
+            $(".forecast-temp"+i).text(forecastData.forecast.forecastday[i].day.avgtemp_f+" °F");
+        } 
+        
+        for(var i=0; i<7; i++){
+            $(".history-temp"+(i+1)).text(historyData.forecast.forecastday[i].day.avgtemp_f+" °F");
+        } 
+        
+    }
+}
+
+
+
 setWeatherData("Colombo");
 setLocationWeatherData();
 
@@ -63,20 +98,14 @@ setLocationWeatherData();
 
 
 
-
-
-
+$(".units-changer-btn").click(function(){
+    $("body").toggleClass("imperial-units");
+    unitsChanger();
+});
 
 $(".user-location-btn").click(function(){
     setLocationWeatherData();
 });
-
-
-$(".units-changer-btn").click(function(){
-    console.log(forecastData.current.wind_mph);
-});
-
-
 
 
 $(".theme-changer-btn").click(function(){

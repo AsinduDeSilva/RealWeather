@@ -22,6 +22,11 @@
         content: url(../resources/icons8-sun.svg);
     }
 }
+.imperial-units{
+    .units-changer-btn{
+        content: url(../resources/fahrenheit.png);
+    }
+}
 body{
     font-family: var(--font);
     background-color: var(--color-2);
