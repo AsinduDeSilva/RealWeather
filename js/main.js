@@ -1,7 +1,10 @@
+const WEATHER_API_KEY="1a7e232a669b4a1a8da83109231405";
 var forecastData;
+var historyData;
 
-function setData(location){
-    fetch('http://api.weatherapi.com/v1/forecast.json?key=1a7e232a669b4a1a8da83109231405&days=3&q='+location)
+var setWeatherData=(location)=>{
+
+    fetch('http://api.weatherapi.com/v1/forecast.json?key='+WEATHER_API_KEY+'&days=3&q='+location)
       .then(response => response.json())
       .then(json => {
         forecastData=json;
@@ -23,12 +26,50 @@ function setData(location){
             $(".forecast-humidity"+i).text(json.forecast.forecastday[i].day.avghumidity+" %");
         } 
         
-    })   
+    })
+
+    const epoch = Math.round(Date.now()/1000);
+
+    fetch('http://api.weatherapi.com/v1/history.json?key='+WEATHER_API_KEY+'&q='+location+'&unixdt='+(epoch-604800)+'&unixend_dt='+(epoch-86400))
+      .then(response => response.json())
+      .then(json => {
+        historyData=json;
+        
+        for(var i=0; i<7; i++){
+            $(".history-day"+(i+1)).text(json.forecast.forecastday[i].date);
+            $(".history-condition-text"+(i+1)).text(json.forecast.forecastday[i].day.condition.text);
+            $(".history-temp"+(i+1)).text(json.forecast.forecastday[i].day.avgtemp_c+" °C");
+            $(".history-humidity"+(i+1)).text(json.forecast.forecastday[i].day.avghumidity+" %");
+        }        
+    })
+      
 }
 
-setData("kalutara");
+function setLocationWeatherData(){
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position)=>{
+            setWeatherData(position.coords.latitude+','+position.coords.longitude);
+        });
+    }else{
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+setWeatherData("Colombo");
+setLocationWeatherData();
 
 
+
+
+
+
+
+
+
+
+$(".user-location-btn").click(function(){
+    setLocationWeatherData();
+});
 
 
 $(".units-changer-btn").click(function(){
