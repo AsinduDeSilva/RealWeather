@@ -3,7 +3,7 @@ var forecastData;
 var historyData;
 var isImperial=false;
 
-var setWeatherData=(location)=>{
+const setWeatherData=(location)=>{
 
     fetch('http://api.weatherapi.com/v1/forecast.json?key='+WEATHER_API_KEY+'&days=3&alerts=yes&q='+location)
       .then(response => response.json())
@@ -102,6 +102,36 @@ setLocationWeatherData();
 
 
 
+$(".search-bar").keyup(function(e) {
+    $(".search-dropdown").empty();
+    if(e.target.value != ''){
+        fetch('http://api.weatherapi.com/v1/search.json?key='+WEATHER_API_KEY+'&q='+(e.target.value))
+            .then(response => response.json())
+            .then(json => {
+                //var txt="";
+                for(var i=0; i<json.length; i++){                 
+                    $(".search-dropdown").append("<li class=\"dropdown-item search-dropdown-item\">"+json[i].name+", "+json[i].region+", "+json[i].country+"</li>");
+
+                    //txt=txt+"<li class=\"dropdown-item search-dropdown-item\"> "+json[i].name+", "+json[i].region+", "+json[i].country+"</li>";    
+                }
+                //$(".search-dropdown").append("<ul class=\"dropdown-menu search-dropdown\"></ul>");            
+        })
+    }    
+
+
+
+    if(e.which == 13) {
+        setWeatherData(e.target.value);
+        e.target.value='';
+    }
+});
+
+
+
+$( ".search-dropdown" ).on( "click", '.search-dropdown-item', function(e) {
+    console.log(e.target.innerHTML);
+    setWeatherData(e.target.innerHTML);
+});
 
 $(".units-changer-btn").click(function(){
     $("body").toggleClass("imperial-units");

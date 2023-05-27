@@ -1,3 +1,16 @@
+::-webkit-scrollbar {
+    width: 7px;
+}  
+::-webkit-scrollbar-track {
+    background: #12121d;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-3);
+
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-hover);
+}
 :root{
     --font:'Poppins', sans-serif;
     --font-2: 'Roboto', sans-serif;
@@ -59,9 +72,15 @@ hr{
 .navbar-brand:hover{
     color: #fff;
 }
+
 .search-bar{
     width: 500px;
     height: 40px;   
+}
+.search-dropdown{
+    width: 500px;
+    max-height: 200px;
+    overflow: auto;
 }
 .user-location-btn{
     border-radius: 100%;
@@ -79,8 +98,9 @@ hr{
 .alerts hr{
     color: black;
 }
-.alerts::-webkit-scrollbar{
-    
+.alert-btn:hover{
+    cursor: pointer;
+    scale: 1.08;
 }
 .theme-changer-btn, .units-changer-btn, .alert-btn{
     height: 35px;
@@ -112,6 +132,9 @@ hr{
         width: 400px;
         margin-top: 10px;
     }
+    .search-dropdown{
+        width: 400px;
+    }
     .alerts{
         font-size: 14px;
     }
@@ -128,6 +151,9 @@ hr{
 }
 @media screen and (max-width: 575px) {
     .search-bar{
+        width: 285px;
+    }
+    .search-dropdown{
         width: 285px;
     }
     .alerts{
@@ -147,6 +173,9 @@ hr{
     .search-bar{
         width: 270px;
     }
+    .search-dropdown{
+        width: 270px;
+    }
     .alerts{
         width: 300px;
     }
@@ -161,7 +190,7 @@ hr{
     font-weight: 600;
 }
 .current-outer{
-    height: 500px;
+    height: 470px;
     background-color: var(--color-1);
     border-radius: 50px;
     border: var(--color-5) solid 2px ;
@@ -292,7 +321,7 @@ hr{
 /*---------------------------forecast weather------------------------------*/
 
 .forecast-outer{
-    height: 550px;
+    height: 590px;
     margin-top: 8vh;
     margin-bottom: 8vh;
     background-color: var(--color-1);
