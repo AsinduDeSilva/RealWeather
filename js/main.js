@@ -4,6 +4,21 @@ var historyData;
 var isImperial=false;
 
 const setWeatherData=(location)=>{
+
+    if(!window.navigator.onLine){
+        Swal.fire({
+            icon: 'error',
+            title: "No Internet",                           
+            customClass: {
+                popup: 'popup',
+                title: 'popup-title',
+                icon: 'popup-icon',
+                image: 'popup-icon',
+            }  
+        })
+        return;
+    }
+
     $(".loading-screen").css('display', 'flex');    
 
     fetch('https://api.weatherapi.com/v1/forecast.json?key='+WEATHER_API_KEY+'&days=3&alerts=yes&q='+location)
@@ -66,9 +81,7 @@ const setWeatherData=(location)=>{
     fetch('https://api.weatherapi.com/v1/history.json?key='+WEATHER_API_KEY+'&q='+location+'&unixdt='+(epoch-604800)+'&unixend_dt='+(epoch-86400))
       .then(response => response.json())
       .then(json => {
-        historyData=json;
-        
-        
+        historyData=json;    
         for(var i=0; i<7; i++){
             $(".history-day"+(i+1)).text(json.forecast.forecastday[i].date);
             $(".history-condition-text"+(i+1)).text(json.forecast.forecastday[i].day.condition.text);
@@ -84,6 +97,19 @@ const setWeatherData=(location)=>{
 }
 
 function setLocationWeatherData(){
+    if(!window.navigator.onLine){
+        Swal.fire({
+            icon: 'error',
+            title: "No Internet",                           
+            customClass: {
+                popup: 'popup',
+                title: 'popup-title',
+                icon: 'popup-icon',
+                image: 'popup-icon',
+            }  
+        })
+        return;
+    }
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position)=>{
             setWeatherData(position.coords.latitude+','+position.coords.longitude);
@@ -132,7 +158,45 @@ setLocationWeatherData();
 
 
 
+window.addEventListener('online', () => {
+    Swal.fire({
+        icon: 'success',
+        title: "Back online",                           
+        customClass: {
+            popup: 'popup',
+            title: 'popup-title',
+            icon: 'popup-icon',
+            image: 'popup-icon',
+        }  
+    })
+});
+window.addEventListener('offline', () => {
+    Swal.fire({
+        icon: 'error',
+        title: "You are offline",                           
+        customClass: {
+            popup: 'popup',
+            title: 'popup-title',
+            icon: 'popup-icon',
+            image: 'popup-icon',
+        }  
+    })
+});
+
 $(".search-bar").on('keyup',function(e) { 
+    if(!window.navigator.onLine){
+        Swal.fire({
+            icon: 'error',
+            title: "No Internet",                           
+            customClass: {
+                popup: 'popup',
+                title: 'popup-title',
+                icon: 'popup-icon',
+                image: 'popup-icon',
+            }  
+        })
+        return;
+    }
     if(e.which !=13) {
         $(".search-dropdown").empty();
         if(e.target.value != ""){
