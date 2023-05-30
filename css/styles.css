@@ -4,12 +4,11 @@
 ::-webkit-scrollbar-track {
     background: #12121d;
 }
-::-webkit-scrollbar-thumb {
-    background: var(--color-3);
-
+::-webkit-scrollbar-thumb {   
+    background: var(--color-hover);
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-hover);
+    background: var(--color-3);
 }
 :root{
     --font:'Poppins', sans-serif;
@@ -75,16 +74,36 @@ hr{
 
 .search-bar{
     width: 500px;
-    height: 40px;   
+    height: 40px;  
 }
 .search-dropdown{
     width: 500px;
     max-height: 200px;
     overflow: auto;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -10px !important;
+    padding-bottom: 0;
+    border-top: none;  
+    
 }
+.search-dropdown:hover{
+    cursor: pointer;
+}
+.search-dropdown::-webkit-scrollbar-track {
+    background: #fff;
+}
+.search-dropdown::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+} 
+.search-bar-focus{
+    display: block;
+}
+
 .user-location-btn{
     border-radius: 100%;
-    height: 45px;
+    height: 42px;
     transition: 0.5s;
 }
 .user-location-btn:hover{
@@ -130,7 +149,6 @@ hr{
 @media screen and (max-width: 1200px) {
     .search-bar{
         width: 400px;
-        margin-top: 10px;
     }
     .search-dropdown{
         width: 400px;
@@ -140,26 +158,59 @@ hr{
     }
     
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991.5px) {
     .theme-changer-btn, .units-changer-btn, .alert-btn{
         margin-top: 10px;
+    }
+    .search-bar{
+        width: 630px;
+        margin-top: 20px;
+    }
+    .search-dropdown{
+        width: 630px;
+    }
+    .user-location-btn{
+        margin-top: 18px;
     }
     .alerts{
         width: 500px;
     }
+    .navbar-nav li{
+        width: 100px;
+        display: flex;
+        align-items: end;
+        justify-content: end;
+        position: relative;
+        top: -45px;
+        left: 590px;
+    }
     
 }
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 767.5px) {
     .search-bar{
-        width: 285px;
+        width: 450px;
     }
     .search-dropdown{
-        width: 285px;
+        width: 450px;
+    }
+    .navbar-nav li{
+        left: 410px;
+    }
+    
+}
+@media screen and (max-width: 575.5px) {
+    .search-bar{
+        width: 88vw;
+    }
+    .search-dropdown{
+        width: 88vw;
     }
     .alerts{
         width: 400px;
     }
-    
+    .navbar-nav li{
+        left: 77vw;
+    }
 }
 @media screen and (max-width: 366px) {
     .navbar-brand{
@@ -170,22 +221,14 @@ hr{
         height: 35px;
         width: 35px;
     }
-    .search-bar{
-        width: 270px;
-    }
-    .search-dropdown{
-        width: 270px;
-    }
     .alerts{
         width: 300px;
     }
     
 }
 
-
-/*---------------------------navbar------------------------------*/
-
 /*---------------------------current weather------------------------------*/
+
 .location-name{
     font-weight: 600;
 }
@@ -231,7 +274,7 @@ hr{
 .current-condition-icon{
     width: 130px;
     border-radius: 20px;
-    background-color: #fff;
+    
 }
 .current-temp{
     font-size: 45px;
@@ -316,8 +359,6 @@ hr{
     }
 }
 
-/*---------------------------current weather------------------------------*/
-
 /*---------------------------forecast weather------------------------------*/
 
 .forecast-outer{
@@ -365,7 +406,7 @@ hr{
 .forecast-condition-icon{
     width: 100px;
     border-radius: 20px;
-    background-color: #fff;
+    
 }
 .forecast-temp, .forecast-humidity{
     font-size: 45px;
@@ -418,8 +459,6 @@ hr{
     }
     
 }
-
-/*---------------------------forecast weather------------------------------*/
 
 /*---------------------------history weather------------------------------*/
 
@@ -513,4 +552,44 @@ hr{
     .history-temp, .history-humidity{
         font-size: 10px;
     } 
-}    
+}   
+
+/*----------------------Loading-Spinner-------------------*/
+
+.loading-screen{
+    position: fixed;
+    top: 0px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 111vh;
+    width: 110.5vw;
+    display: none;
+    background-color: #12121d50;
+}
+.spinner-border{
+    width: 100px;
+    height: 100px;
+    color: #fff !important;
+}
+
+/*-----------------------popup-------------------------*/
+
+.popup{
+    width: 250px !important;
+    height: 300px !important;
+    background-color: #424266 !important;
+    border: 2px solid #1A1A2F !important;
+    border-radius: 20px !important;
+}
+.popup-title{
+    font-family: var(--font) !important;
+    font-size: 18px !important; 
+    color: #fff !important;
+}
+.popup-icon{
+    width: 40px ;
+    height: 40px ;
+} 
+   
