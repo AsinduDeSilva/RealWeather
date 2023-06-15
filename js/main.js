@@ -19,7 +19,9 @@ const setWeatherData=(location)=>{
         return;
     }
 
-    $(".loading-screen").css('display', 'flex');    
+    $(".loading-screen").css('display', 'flex');
+    $(".alerts").empty();  
+    $(".alerts").append("<p>No Alerts</p>");    
 
     fetch('https://api.weatherapi.com/v1/forecast.json?key='+WEATHER_API_KEY+'&days=3&alerts=yes&q='+location)
       .then(response => {
@@ -30,7 +32,7 @@ const setWeatherData=(location)=>{
             return response.json();
         }
 
-        setTimeout(() => {
+        if(response.status == 400){   
             Swal.fire({
                 icon: 'error',
                 title: "No matching location found.",                           
@@ -40,8 +42,9 @@ const setWeatherData=(location)=>{
                     icon: 'popup-icon',
                     image: 'popup-icon',
                 }  
-            })
-        }, 200); 
+            })          
+        }    
+        
         
       })
       .then(json => {
@@ -73,13 +76,18 @@ const setWeatherData=(location)=>{
         }           
     })
     .catch(error =>{
-        
+        console.log(error);
     })
 
     const epoch = Math.round(Date.now()/1000);
 
     fetch('https://api.weatherapi.com/v1/history.json?key='+WEATHER_API_KEY+'&q='+location+'&unixdt='+(epoch-604800)+'&unixend_dt='+(epoch-86400))
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+      })
+
       .then(json => {
         historyData=json;    
         for(var i=0; i<7; i++){
@@ -113,7 +121,9 @@ function setLocationWeatherData(){
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position)=>{
             setWeatherData(position.coords.latitude+','+position.coords.longitude);
-        });
+        }/*, (err)=>{
+            alert(err.message);
+        }*/);
     }else{
         alert("Geolocation is not supported by this browser.");
     }

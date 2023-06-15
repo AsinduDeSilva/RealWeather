@@ -164,13 +164,13 @@ hr{
     }
     .search-bar{
         width: 630px;
-        margin-top: 20px;
+        margin-top: 35px;
     }
     .search-dropdown{
         width: 630px;
     }
     .user-location-btn{
-        margin-top: 18px;
+        margin-top: 33px;
     }
     .alerts{
         width: 500px;
@@ -183,6 +183,9 @@ hr{
         position: relative;
         top: -45px;
         left: 590px;
+    }
+    .body{
+        zoom: 100%;
     }
     
 }
@@ -332,9 +335,9 @@ hr{
     }
     .current-details{
         font-size: 15px;
-        margin-top: 5px;
         height: 150px; 
-        scale: 0.98;
+        scale: 0.97;
+        margin-bottom: 2px;
     }
     .current-temp{
         font-size: 25px;
@@ -567,6 +570,7 @@ hr{
     width: 110.5vw;
     display: none;
     background-color: #12121d50;
+
 }
 .spinner-border{
     width: 100px;
